@@ -17,12 +17,12 @@ public class Store {
 
     // TODO add the given product to the collection
     public void addToInventory(Product product) {
-
+        Inventory.add(product);
     }
 
     // TODO: Drink version
     public void addToInventory() {
-        Drink drink = new Drink(super.);
+        Drink drink = new Drink();
         addToInventory(drink);
     }
 
