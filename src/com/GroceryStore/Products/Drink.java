@@ -3,10 +3,7 @@ package com.GroceryStore.Products;
 public class Drink extends Product {
     public final static String [] UNITS = new String[]{"Gal", "oz",
             "litres", "ml", "pint", "quart"};
-            //UNITS tem que ser maiusculo para dizer que e final para outros
-            // coders
-    //final can only be accessed, shortcut for a type of private item becouse
-    // you can only access the value not needing a getter;
+
     private int volume;
     private String volumeUnit;
 

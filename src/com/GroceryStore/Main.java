@@ -17,5 +17,13 @@ public class Main {
         System.out.println(prod);
         System.out.println(prod3);
         System.out.println(prod4);
+
+        Store store = new Store("test");
+        store.addToInventory("d-005", "Coke", 1_99, "Coca Cola", 2, "litres");
+        System.out.println(store.getInventory());
+        store.addToInventory("p-008", "Mango", 2_99, "International Mango", 5
+                , true);
+        System.out.println(store.getInventory());
+
     }
 }
