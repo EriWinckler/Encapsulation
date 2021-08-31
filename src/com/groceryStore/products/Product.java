@@ -1,8 +1,8 @@
-package com.GroceryStore.Products;
+package com.groceryStore.products;
 
 import java.text.NumberFormat;
 
-public class Product {
+public abstract class Product {
     private String id;
     private String name;
     private int price;
@@ -25,4 +25,6 @@ public class Product {
                 "id " + id + " | name: " + name + " | price: " + getDisplayPrice() + " | ";
         return output;
     }
+
+    public int getPrice() { return price; }
 }

@@ -1,4 +1,4 @@
-package com.GroceryStore.Products;
+package com.groceryStore.products;
 
 public class Drink extends Product {
     public final static String [] UNITS = new String[]{"Gal", "oz",

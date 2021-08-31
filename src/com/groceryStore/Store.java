@@ -1,7 +1,7 @@
-package com.GroceryStore;
-import com.GroceryStore.Products.Drink;
-import com.GroceryStore.Products.Fruit;
-import com.GroceryStore.Products.Product;
+package com.groceryStore;
+import com.groceryStore.products.Drink;
+import com.groceryStore.products.Fruit;
+import com.groceryStore.products.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +11,15 @@ public class Store {
     private int balance = 500_00;
     private String name;
 
-    public List<Product> getInventory() {
-        return Inventory;
-    }
-
     public Store(String name) { this.name = name; }
 
     // TODO add the given product to the collection
     public void addToInventory(Product product) {
+        if(product.getPrice() > balance) {
+            System.out.println("Not enough funds");
+            return;
+        }
+        balance -= product.getPrice();
         Inventory.add(product);
     }
 
@@ -48,5 +49,14 @@ public class Store {
                                int hardness, boolean isOrganic) {
         Fruit fruit = new Fruit(id, name, price, description, hardness, isOrganic);
         addToInventory(fruit);
+    }
+
+
+    public String getInventory() {
+        String output = "";
+        for(Product prod : Inventory) {
+            output += prod + "\n";
+        }
+        return output;
     }
 }

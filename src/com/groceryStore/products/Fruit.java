@@ -1,4 +1,4 @@
-package com.GroceryStore.Products;
+package com.groceryStore.products;
 
 public class Fruit extends Product {
     private String type;
