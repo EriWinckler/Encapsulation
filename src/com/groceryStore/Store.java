@@ -2,6 +2,7 @@ package com.groceryStore;
 import com.groceryStore.products.Drink;
 import com.groceryStore.products.Fruit;
 import com.groceryStore.products.Product;
+import com.util.Formatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,9 @@ public class Store {
         addToInventory(fruit);
     }
 
+    public void throwAway(Product product) {
+        Inventory.remove(product);
+    }
 
     public String getInventory() {
         String output = "";
@@ -59,4 +63,8 @@ public class Store {
         }
         return output;
     }
+
+    public String getBalance() { return Formatter.getDisplayPrice(balance); }
+
+    public String getName() { return name; }
 }

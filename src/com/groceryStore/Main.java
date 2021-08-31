@@ -1,10 +1,12 @@
 package com.groceryStore;
 
+import com.groceryStore.console.UI;
+
 public class Main {
     public static void main(String[] args) {
 
         Store store = new Store("Eri's Store");
-
+/*
         store.addToInventory("p-001", "Apple", 89,
                 "Red Apple", 5, true);
         store.addToInventory("p-002", "Orange", 4_99, "Blood Orange", 4);
@@ -13,8 +15,11 @@ public class Main {
         store.addToInventory("d-001", "Orange Juice", 4_99, "With Pulp", 2
                 , 5);
 
-
         System.out.println(store.getInventory());
+*/
+
+        UI.start(store);
+
 
     }
 }
