@@ -14,7 +14,6 @@ public class Store {
 
     public Store(String name) { this.name = name; }
 
-    // TODO add the given product to the collection
     public void addToInventory(Product product) {
         if(product.getPrice() > balance) {
             System.out.println("Not enough funds");
@@ -24,7 +23,6 @@ public class Store {
         Inventory.add(product);
     }
 
-    // TODO: Drink version
     public void addToInventory(String id, String name, int price,
                                String description, int volume, String volumeUnit) {
         Drink drink = new Drink(id, name, price, description, volume,
@@ -39,7 +37,7 @@ public class Store {
         addToInventory(drink);
     }
 
-    // TODO: Fruit version
+    //Fruit version
     public void addToInventory(String id, String name, int price, String description,
                                int hardness) {
         Fruit fruit = new Fruit(id, name, price, description, hardness);
@@ -52,6 +50,13 @@ public class Store {
         addToInventory(fruit);
     }
 
+    public void purchase(Product product) {
+        balance += product.getPrice();
+        throwAway(product);
+    }
+
+
+
     public void throwAway(Product product) {
         Inventory.remove(product);
     }
@@ -62,6 +67,15 @@ public class Store {
             output += prod + "\n";
         }
         return output;
+    }
+
+    public Product getProduct (String id) {
+        for (Product product : Inventory) {
+            if (product.id.equals(id)) {
+                return product;
+            }
+        }
+        return null;
     }
 
     public String getBalance() { return Formatter.getDisplayPrice(balance); }
