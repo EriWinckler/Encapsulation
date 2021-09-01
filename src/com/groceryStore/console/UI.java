@@ -2,6 +2,7 @@ package com.groceryStore.console;
 
 import com.groceryStore.Store;
 import com.groceryStore.products.Drink;
+import com.groceryStore.products.Fruit;
 import com.groceryStore.products.Product;
 
 import java.util.Scanner;
@@ -101,17 +102,29 @@ public class UI {
 
     public static Drink getDrinkDetails() {
         return new Drink(
-                getString("DrinkName", true),
-                getInt(1, Integer.MAX_VALUE, "Price?"),
                 getString("Id: ", true),
+                getString("Drink Name", true),
+                getInt(1, Integer.MAX_VALUE, "Price?"),
                 getString("Description: ", false),
                 getInt(1, Integer.MAX_VALUE, "Volume"),
-                getInt(0, Drink.UNITS.length - 1, "Volume Unit")
+                getInt( 0, Drink.UNITS.length - 1, "Volume Unit")
         );
     }
 
+    public static Fruit getFruitDetails() {
+        return new Fruit(
+                getString("Id: ", true),
+                getString("Fruit Name", true),
+                getInt(1, Integer.MAX_VALUE, "Price?"),
+                getString("Description: ", false),
+                getInt(1, Integer.MAX_VALUE, "Hardness"),
+                getInt( 0, Drink.UNITS.length - 1, "Volume Unit")
+        );
+    }
+    String id, String name, int price, String description,
+    int hardness, boolean isOrganic
 
-    public static void throwAwayProduct() {
+    public void throwAwayProduct() {
         Product prod = selectProduct("With product id to throw away? press " +
                 "enter to cancel");
         if(prod == null) {
@@ -125,13 +138,15 @@ public class UI {
         System.out.println(store.getInventory());
     }
 
-    public Product selectProduct(String prompt) {
+    private Product selectProduct(String prompt) {
         displayProducts();
         String choice = getString(prompt, false);
         return store.getProduct(choice);
     }
 
-    public static void sellProduct() {
+
+
+    public void sellProduct() {
         Product prod = selectProduct("With product id to purchase? press " +
                 "enter to cancel");
         if(prod == null) {
