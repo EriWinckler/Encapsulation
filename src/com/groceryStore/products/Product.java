@@ -3,7 +3,7 @@ package com.groceryStore.products;
 import java.text.NumberFormat;
 
 public abstract class Product {
-    private String id;
+    public final String id;
     private String name;
     private int price;
     private String description;

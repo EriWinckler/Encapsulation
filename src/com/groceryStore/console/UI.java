@@ -35,7 +35,8 @@ public class UI {
         }
     }
 
-    public static void start(Store store) {
+    public void start(Store store) {
+        this.store = store;
         welcome(store.getName());
         displayOptions("What would you like to do?", MENU);
         int choice = getInt(1, 5, "Enter selection between 1 and 5:");
@@ -73,7 +74,22 @@ public class UI {
         return input;
     }
 
-    public static void handleMenuSelection(int choice) {
+    public static boolean getBoolean(String prompt, boolean isOrganic) {
+        String option;
+        do {
+            System.out.println(prompt + " 1 - True | 2 - False.");
+            option = scan.nextLine();
+            switch (option) {
+                case "1" -> isOrganic = true;
+                case "2" -> isOrganic = false;
+                default -> System.out.println("Invalid choice, try again.");
+            }
+            break;
+        } while (true);
+        return isOrganic;
+    }
+
+    public void handleMenuSelection(int choice) {
         switch (choice) {
             case 1 -> addProduct();
             case 2 -> throwAwayProduct();
@@ -118,11 +134,9 @@ public class UI {
                 getInt(1, Integer.MAX_VALUE, "Price?"),
                 getString("Description: ", false),
                 getInt(1, Integer.MAX_VALUE, "Hardness"),
-                getInt( 0, Drink.UNITS.length - 1, "Volume Unit")
+                getBoolean("Is it organic?", false)
         );
     }
-    String id, String name, int price, String description,
-    int hardness, boolean isOrganic
 
     public void throwAwayProduct() {
         Product prod = selectProduct("With product id to throw away? press " +

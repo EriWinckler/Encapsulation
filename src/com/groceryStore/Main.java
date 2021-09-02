@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         Store store = new Store("Eri's Store");
+        UI ui = new UI();
 /*
         store.addToInventory("p-001", "Apple", 89,
                 "Red Apple", 5, true);
@@ -17,8 +18,10 @@ public class Main {
 
         System.out.println(store.getInventory());
 */
-
-        UI.start(store);
+        System.out.println(store.getBalance());
+        ui.start(store);
+        System.out.println(store.getInventory());
+        System.out.println(store.getBalance());
 
 
     }
