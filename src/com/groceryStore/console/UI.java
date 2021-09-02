@@ -4,29 +4,42 @@ import com.groceryStore.Store;
 import com.groceryStore.products.Drink;
 import com.groceryStore.products.Fruit;
 import com.groceryStore.products.Product;
+import com.languages.Languages;
+import com.languages.regions.English;
+import com.languages.regions.Portuguese;
 
 import java.util.Scanner;
 
 public class UI {
     private static Scanner scan = new Scanner(System.in);
     private Store store;
+    private Languages languageChoice = new English();
 
-    public final static String [] MENU = new String[] {
-            "1 - Add product to inventory",
-            "2 - Throw away a product",
-            "3 - list products available",
-            "4 - Sell a product",
-            "5 - Quit"
-    };
-
-    public final static String[] PRODUCT_TYPES = new String[] {
-            "1 - Drink",
-            "2 - Fruit"
-    };
-
-    public static void welcome(String name) {
+    public void welcome(String name) {
         System.out.println("Welcome to " + name + "!");
+        System.out.println("Please select your language: | Por favor selecione a sua linguagem:");
+        System.out.println("English or/ou Portuguese");
+        String lang = scan.nextLine().toLowerCase();
+        languageChoice = languageSelector(lang);
     }
+
+    public Languages languageSelector(String language) {
+        switch(language) {
+            case "english":
+                return languageChoice = new English();
+            case "portuguese":
+                return languageChoice = new Portuguese();
+            default:
+                System.out.println("Invalid choice, please try again");
+        }
+        return null;
+    }
+
+    public final String [] MENU = languageChoice.menuText();
+
+    public final String[] PRODUCT_TYPES = languageChoice.productTypesText();
+
+
 
     public static void displayOptions(String prompt, String[] options) {
         System.out.println(prompt);
@@ -38,8 +51,8 @@ public class UI {
     public void start(Store store) {
         this.store = store;
         welcome(store.getName());
-        displayOptions("What would you like to do?", MENU);
-        int choice = getInt(1, 5, "Enter selection between 1 and 5:");
+        displayOptions(languageChoice.welcomeText(), MENU);
+        int choice = getInt(1, 5, languageChoice.startPromptText());
         handleMenuSelection(choice);
     }
 
