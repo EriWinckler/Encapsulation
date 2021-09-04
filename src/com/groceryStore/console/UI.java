@@ -35,11 +35,6 @@ public class UI {
         return null;
     }
 
-    public final String [] MENU = languageChoice.menuText();
-
-    public final String[] PRODUCT_TYPES = languageChoice.productTypesText();
-
-
 
     public static void displayOptions(String prompt, String[] options) {
         System.out.println(prompt);
@@ -51,7 +46,7 @@ public class UI {
     public void start(Store store) {
         this.store = store;
         welcome(store.getName());
-        displayOptions(languageChoice.welcomeText(), MENU);
+        displayOptions(languageChoice.welcomeText(), languageChoice.menuText());
         int choice = getInt(1, 5, languageChoice.startPromptText());
         handleMenuSelection(choice);
     }
@@ -114,8 +109,8 @@ public class UI {
     }
 
     public void addProduct() {
-        displayOptions("What kind of procuts?", PRODUCT_TYPES);
-        int choice = getInt(1, PRODUCT_TYPES.length, "enter a value");
+        displayOptions("What kind of procuts?", languageChoice.productTypesText());
+        int choice = getInt(1, languageChoice.productTypesText().length, "enter a value");
         Product newProduct;
         switch (choice) {
             case 1 -> newProduct = getDrinkDetails();
